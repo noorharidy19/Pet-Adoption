@@ -1,0 +1,85 @@
+        body {
+            background: #f4f8fb;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .body-bg-blur {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        background: url('../img/doglogin.jpg') no-repeat center center fixed;
+        background-size: cover;
+        filter: blur(3px);
+        }
+        .pets-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            padding: 24px;
+        }
+        .pets-title {
+            text-align: center;
+            color: #2d89ef;
+            margin-bottom: 24px;
+        }
+        .pets-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+        }
+        .pet-card {
+            background: #f7fafc;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 16px;
+            width: 180px;
+            text-align: center;
+            transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+            cursor: pointer;
+            margin-bottom: 18px;
+            position: relative;
+        }
+        .pet-card:hover {
+           transform: translateY(-8px) scale(1.04);
+           box-shadow: 0 8px 24px rgba(45,137,239,0.18);
+           background: #eaf4fd;
+           z-index: 2;
+}
+        .pet-card img {
+            width: 80%;
+            height: 135px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        .pet-card:hover img {
+    filter: brightness(0.95) saturate(1.2);
+}
+        .pet-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        .pet-type {
+            color: #2d89ef;
+            font-size: 0.98em;
+            margin-bottom: 6px;
+        }
+          .pet-status.adopted {
+        color: #e53935; /* Red for adopted */
+        font-weight: bold;
+        }
+        .pet-status.not-adopted {
+        color: #1b8a3b; /* Green for not adopted */
+        font-weight: bold;
+       }
+       .pet-status {
+    margin-top: 6px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: color 0.25s;
+}
