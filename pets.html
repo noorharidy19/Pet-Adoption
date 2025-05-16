@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>Photo</th>
                     <th>Name</th>
                     <th>Breed</th>
                     <th>Age</th>
@@ -23,54 +25,44 @@
                 </tr>
             </thead>
             <tbody id="petTableBody">
-                <tr>
-                    <td>Buddy</td>
-                    <td>Labrador</td>
-                    <td>3</td>
-                    <td>Golden</td>
-                    <td>Available</td>
-                    <td>
-                        <button class="action-btn edit" onclick="openPopup('edit', 0)">Edit</button>
-                        <button class="action-btn" onclick="removePet(0)">Remove</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Luna</td>
-                    <td>Beagle</td>
-                    <td>2</td>
-                    <td>Brown/White</td>
-                    <td>Adopted</td>
-                    <td>
-                        <button class="action-btn edit" onclick="openPopup('edit', 1)">Edit</button>
-                        <button class="action-btn" onclick="removePet(1)">Remove</button>
-                    </td>
-                </tr>
+                <!-- Pets will be added here dynamically -->
             </tbody>
         </table>
     </div>
+
     <!-- Popup Container -->
-    <div class="popup-container" id="popupContainer">
+    <div class="popup-container" id="popupContainer" style="display:none;">
         <div class="popup">
             <h2 id="popupTitle">Add Pet</h2>
             <form id="petForm" onsubmit="savePet(event)">
                 <label for="petName">Name</label>
                 <input type="text" id="petName" name="petName">
                 <div class="error-message" id="nameError" style="color: red;"></div>
+
                 <label for="breed">Breed</label>
                 <input type="text" id="breed" name="breed">
                 <div class="error-message" id="breedError" style="color: red;"></div>
+
                 <label for="age">Age</label>
                 <input type="number" id="age" name="age" min="0">
                 <div class="error-message" id="ageError" style="color: red;"></div>
+
                 <label for="color">Color</label>
                 <input type="text" id="color" name="color">
                 <div class="error-message" id="colorError" style="color: red;"></div>
+
                 <label for="status">Status</label>
                 <select id="status" name="status">
                     <option value="Available">Available</option>
                     <option value="Adopted">Adopted</option>
                 </select>
                 <div class="error-message" id="statusError" style="color: red;"></div>
+
+                <label for="petPhoto">Photo</label>
+                <input type="file" id="petPhoto" name="petPhoto" accept="image/*" onchange="previewImage(event)">
+                <div class="error-message" id="photoError" style="color: red;"></div>
+                <img id="photoPreview" src="" alt="Preview" style="display:none; max-width: 100px; margin-top: 10px;">
+
                 <div class="popup-actions">
                     <button type="button" class="cancel" onclick="closePopup()">Cancel</button>
                     <button type="submit" class="save">Save</button>
@@ -78,7 +70,12 @@
             </form>
         </div>
     </div>
+
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
     <script src="js/pets.js"></script>
-   
 </body>
 </html>
