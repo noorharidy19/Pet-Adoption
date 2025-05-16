@@ -3,6 +3,16 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
 }
+.body-bg-blur {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        background: url('../img/bodyy.jpg') no-repeat center center fixed;
+        background-size: cover;
+        filter: blur(3px);
+        }
 
 .navbar {
     font-family: monospace;
@@ -10,8 +20,10 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 20px 150px;
+    padding: 0px 32px;
+    height: 70px;
     position: fixed;
+    box-sizing: border-box;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -39,6 +51,7 @@ body {
 
 .nav-links {
     display: flex;
+    align-items: center;
     gap: 20px;
 }
 
@@ -58,7 +71,7 @@ body {
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 5px;
 }
 
 .login {
