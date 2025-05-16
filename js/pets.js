@@ -1,6 +1,7 @@
-   let pets = [
-            { name: 'Buddy', breed: 'Labrador', age: 3, color: 'Golden' },
-            { name: 'Luna', breed: 'Beagle', age: 2, color: 'Brown/White' }
+
+        let pets = [
+            { name: 'Buddy', breed: 'Labrador', age: 3, color: 'Golden', status: 'Available' },
+            { name: 'Luna', breed: 'Beagle', age: 2, color: 'Brown/White', status: 'Adopted' }
         ];
         let editIndex = null;
         function renderTable() {
@@ -13,6 +14,7 @@
                     <td>${pet.breed}</td>
                     <td>${pet.age}</td>
                     <td>${pet.color}</td>
+                    <td>${pet.status}</td>
                     <td>
                         <button class='action-btn edit' onclick='openPopup("edit", ${idx})'>Edit</button>
                         <button class='action-btn' onclick='removePet(${idx})'>Remove</button>
@@ -29,10 +31,12 @@
                 document.getElementById('breed').value = pets[idx].breed;
                 document.getElementById('age').value = pets[idx].age;
                 document.getElementById('color').value = pets[idx].color;
+                document.getElementById('status').value = pets[idx].status;
             } else {
                 editIndex = null;
                 document.getElementById('popupTitle').innerText = 'Add Pet';
                 document.getElementById('petForm').reset();
+                document.getElementById('status').value = 'Available';
             }
             clearErrors();
         }
@@ -45,6 +49,7 @@
             const breed = document.getElementById('breed').value.trim();
             const age = document.getElementById('age').value.trim();
             const color = document.getElementById('color').value.trim();
+            const status = document.getElementById('status').value;
             clearErrors();
             if (!name) {
                 document.getElementById('nameError').textContent = 'Name is required.';
@@ -62,6 +67,10 @@
                 document.getElementById('colorError').textContent = 'Color is required.';
                 valid = false;
             }
+            if (!status) {
+                document.getElementById('statusError').textContent = 'Status is required.';
+                valid = false;
+            }
             return valid;
         }
         function clearErrors() {
@@ -69,6 +78,7 @@
             document.getElementById('breedError').textContent = '';
             document.getElementById('ageError').textContent = '';
             document.getElementById('colorError').textContent = '';
+            document.getElementById('statusError').textContent = '';
         }
         function savePet(e) {
             e.preventDefault();
@@ -77,10 +87,11 @@
             const breed = document.getElementById('breed').value;
             const age = document.getElementById('age').value;
             const color = document.getElementById('color').value;
+            const status = document.getElementById('status').value;
             if (editIndex !== null) {
-                pets[editIndex] = { name, breed, age, color };
+                pets[editIndex] = { name, breed, age, color, status };
             } else {
-                pets.push({ name, breed, age, color });
+                pets.push({ name, breed, age, color, status });
             }
             renderTable();
             closePopup();
@@ -92,3 +103,4 @@
             }
         }
         renderTable();
+ 

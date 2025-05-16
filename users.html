@@ -18,27 +18,11 @@
                     <th>Email</th>
                     <th>Role</th>
                     <th>Actions</th>
+                    <th>Applications</th>
                 </tr>
             </thead>
             <tbody id="userTableBody">
-                <tr>
-                    <td>Jane Doe</td>
-                    <td>jane@example.com</td>
-                    <td>Admin</td>
-                    <td>
-                        <button class="action-btn edit" onclick="openPopup('edit', 0)">Edit</button>
-                        <button class="action-btn" onclick="removeUser(0)">Remove</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>John Smith</td>
-                    <td>john@example.com</td>
-                    <td>User</td>
-                    <td>
-                        <button class="action-btn edit" onclick="openPopup('edit', 1)">Edit</button>
-                        <button class="action-btn" onclick="removeUser(1)">Remove</button>
-                    </td>
-                </tr>
+                <!-- Table rows will be rendered by JS -->
             </tbody>
         </table>
     </div>
@@ -63,9 +47,41 @@
             </form>
         </div>
     </div>
+    <!-- Applications Popup -->
+    <div class="popup-container" id="applicationsPopupContainer" style="display:none;">
+        <div class="popup">
+            <h2>User Applications</h2>
+            <div id="applicationsList">
+                <!-- Applications will be listed here -->
+            </div>
+            <div class="popup-actions">
+                <button type="button" class="cancel" onclick="closeApplicationsPopup()">Close</button>
+            </div>
+        </div>
+    </div>
     <script src="js/user.js"></script>
     <script>
-     
+        // Remove static rows, render with JS
+        renderTable = function() {
+            const tbody = document.getElementById('userTableBody');
+            tbody.innerHTML = '';
+            users.forEach((user, idx) => {
+                tbody.innerHTML += `
+                <tr>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.role}</td>
+                    <td>
+                        <button class='action-btn edit' onclick='openPopup("edit", ${idx})'>Edit</button>
+                        <button class='action-btn' onclick='removeUser(${idx})'>Remove</button>
+                    </td>
+                    <td><button class='action-btn' onclick='openApplicationsPopup(${idx})'>View</button></td>
+                </tr>`;
+            });
+        }
+        // Initial render
+        renderTable();
     </script>
+   
 </body>
 </html>

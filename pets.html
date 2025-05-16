@@ -18,6 +18,7 @@
                     <th>Breed</th>
                     <th>Age</th>
                     <th>Color</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -27,6 +28,7 @@
                     <td>Labrador</td>
                     <td>3</td>
                     <td>Golden</td>
+                    <td>Available</td>
                     <td>
                         <button class="action-btn edit" onclick="openPopup('edit', 0)">Edit</button>
                         <button class="action-btn" onclick="removePet(0)">Remove</button>
@@ -37,6 +39,7 @@
                     <td>Beagle</td>
                     <td>2</td>
                     <td>Brown/White</td>
+                    <td>Adopted</td>
                     <td>
                         <button class="action-btn edit" onclick="openPopup('edit', 1)">Edit</button>
                         <button class="action-btn" onclick="removePet(1)">Remove</button>
@@ -62,6 +65,12 @@
                 <label for="color">Color</label>
                 <input type="text" id="color" name="color">
                 <div class="error-message" id="colorError" style="color: red;"></div>
+                <label for="status">Status</label>
+                <select id="status" name="status">
+                    <option value="Available">Available</option>
+                    <option value="Adopted">Adopted</option>
+                </select>
+                <div class="error-message" id="statusError" style="color: red;"></div>
                 <div class="popup-actions">
                     <button type="button" class="cancel" onclick="closePopup()">Cancel</button>
                     <button type="submit" class="save">Save</button>
@@ -70,7 +79,6 @@
         </div>
     </div>
     <script src="js/pets.js"></script>
-     
-    </script>
+   
 </body>
 </html>

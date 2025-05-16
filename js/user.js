@@ -1,7 +1,7 @@
-    // Example users array
+// Example users array
         let users = [
-            { name: 'Jane Doe', email: 'jane@example.com', role: 'Admin' },
-            { name: 'John Smith', email: 'john@example.com', role: 'Staff' }
+            { name: 'Jane Doe', email: 'jane@example.com', role: 'Admin', },
+            { name: 'John Smith', email: 'john@example.com', role: 'user' }
         ];
         let editIndex = null;
 
@@ -154,3 +154,46 @@
         }
         error.textContent = message;
     }
+
+    // Example applications data for each user
+let userApplications = [
+    [
+        { id: 1, pet: 'Buddy', status: 'Pending' },
+        { id: 2, pet: 'Luna', status: 'Approved' }
+    ],
+    [
+        { id: 3, pet: 'Max', status: 'Pending' }
+    ]
+];
+function openApplicationsPopup(userIdx) {
+    const container = document.getElementById('applicationsPopupContainer');
+    const listDiv = document.getElementById('applicationsList');
+    listDiv.innerHTML = '';
+    const apps = userApplications[userIdx] || [];
+    if (apps.length === 0) {
+        listDiv.innerHTML = '<p>No applications found.</p>';
+    } else {
+        apps.forEach((app, idx) => {
+            listDiv.innerHTML += `
+                <div style='margin-bottom:12px;padding:8px 0;border-bottom:1px solid #eee;'>
+                    <strong>Pet:</strong> ${app.pet} <br>
+                    <strong>Status:</strong> <span id='appStatus${userIdx}_${idx}'>${app.status}</span><br>
+                    <button class='action-btn' onclick='approveApplication(${userIdx},${idx})'>Approve</button>
+                    <button class='action-btn' onclick='rejectApplication(${userIdx},${idx})'>Reject</button>
+                </div>
+            `;
+        });
+    }
+    container.style.display = 'flex';
+}
+function closeApplicationsPopup() {
+    document.getElementById('applicationsPopupContainer').style.display = 'none';
+}
+function approveApplication(userIdx, appIdx) {
+    userApplications[userIdx][appIdx].status = 'Approved';
+    document.getElementById(`appStatus${userIdx}_${appIdx}`).textContent = 'Approved';
+}
+function rejectApplication(userIdx, appIdx) {
+    userApplications[userIdx][appIdx].status = 'Rejected';
+    document.getElementById(`appStatus${userIdx}_${appIdx}`).textContent = 'Rejected';
+}
