@@ -1,0 +1,120 @@
+
+        body {
+            background: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+            padding: 32px 24px 40px 24px;
+        }
+        h1 {
+            color: #4340ff;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .add-btn {
+            background: linear-gradient(90deg, #4340ff 60%,#a4befa  100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 28px;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 24px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .add-btn:hover {
+            background: linear-gradient(90deg, #ff4081 60%, #4340ff 100%);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+        }
+        th, td {
+            padding: 14px 10px;
+            text-align: left;
+        }
+        th {
+            background: #4340ff;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background: #f4f6fb;
+        }
+        .action-btn {
+            background: #ff4081;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 7px 16px;
+            margin-right: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .action-btn.edit {
+            background: #4340ff;
+        }
+        .action-btn:hover {
+            opacity: 0.85;
+        }
+        /* Popup styles */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px 28px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+            min-width: 320px;
+            max-width: 90vw;
+        }
+        .popup h2 {
+            margin-top: 0;
+            color: #4340ff;
+        }
+        .popup label {
+            display: block;
+            margin: 12px 0 4px 0;
+        }
+        .popup input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-bottom: 12px;
+        }
+        .popup .popup-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        .popup .popup-actions button {
+            padding: 8px 18px;
+            border-radius: 6px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .popup .popup-actions .save {
+            background: #4340ff;
+            color: #fff;
+        }
+        .popup .popup-actions .cancel {
+            background: #eee;
+            color: #333;
+        }

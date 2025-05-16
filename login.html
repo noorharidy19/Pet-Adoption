@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Adoption - Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -14,19 +14,54 @@
                 <img src="img/pawprint.png" alt="Cute Dog Icon">
             </div>
             <h2>Welcome!</h2>
-            <form>
+            <form onsubmit="validateLogin(event)">
                 <div class="input">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username" required>
+                    <input type="text" placeholder="Username" id="loginUsername">
                 </div>
+                <div class="error-message" id="loginUsernameError" style="color:red;"></div>
                 <div class="input">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Password" id="loginPassword">
                 </div>
+                <div class="error-message" id="loginPasswordError" style="color:red;"></div>
                 <button type="submit" class="login-btn">Login</button>
             </form>
             <p class="signup-link">New here? <a href="Signup.html">Create an account!</a></p>
         </div>
     </div>
+    <script>
+function validateLogin(event) {
+    event.preventDefault();
+    var username = document.getElementById('loginUsername');
+    var password = document.getElementById('loginPassword');
+    var valid = true;
+    document.getElementById('loginUsernameError').textContent = '';
+    document.getElementById('loginPasswordError').textContent = '';
+    if (!username.value.trim()) {
+        document.getElementById('loginUsernameError').textContent = 'Username is required.';
+        valid = false;
+    }
+    if (!password.value) {
+        document.getElementById('loginPasswordError').textContent = 'Password is required.';
+        valid = false;
+    }
+    if (valid) {
+        // Replace with actual login logic
+        alert('Login successful!');
+        event.target.submit();
+    }
+}
+window.onload = function () {
+    let inputs = document.querySelectorAll("input");
+    inputs.forEach(input => {
+        input.addEventListener("input", function () {
+            var errorId = this.id + 'Error';
+            var errorElem = document.getElementById(errorId);
+            if (errorElem) errorElem.textContent = '';
+        });
+    });
+};
+</script>
 </body>
 </html>
