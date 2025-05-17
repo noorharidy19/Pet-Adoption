@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,6 @@
         </a>
         <h2 class="pets-title">All Animals</h2>
         <div class="pets-list">
-            <!-- Example adopted pets, replace or extend as needed -->
             <div class="pet-card">
                 <img src="img/akita.jpg" alt="Dog">
                 <div class="pet-name">Akita</div>
@@ -46,8 +45,62 @@
                 <div class="pet-type">Cat</div>
                 <div class="pet-status adopted">Adopted</div>
             </div>
-            <!-- Add more pet cards as needed -->
         </div>
     </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adopted Animals</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/viewpets.css" />
+</head>
+<body>
+  <div class="body-bg-blur"></div>
+  <div class="pets-container">
+    <a href="Home.html" class="back-link">&larr; Back to Home</a>
+    <h2 class="pets-title">All Animals</h2>
+    <div class="pets-list">
+      <!-- Adopted pets - not clickable -->
+      <div class="pet-card">
+        <img src="img/akita.jpg" alt="Dog">
+        <div class="pet-name">Akita</div>
+        <div class="pet-type">Dog</div>
+        <div class="pet-status adopted">Adopted</div>
+      </div>
+
+      <!-- Not adopted - wrapped in a link -->
+      <a href="adopt.html?name=Golden" class="pet-card">
+        <img src="img/golden.jpg" alt="Dog">
+        <div class="pet-name">Golden</div>
+        <div class="pet-type">Dog</div>
+        <div class="pet-status not-adopted">Not adopted</div>
+      </a>
+
+      <div class="pet-card">
+        <img src="img/amazon parrot.jpg" alt="Bird">
+        <div class="pet-name">Parrot</div>
+        <div class="pet-type">Bird</div>
+        <div class="pet-status adopted">Adopted</div>
+      </div>
+
+      <a href="adopt.html?name=Birman" class="pet-card">
+        <img src="img/Birman.jpg" alt="Cat">
+        <div class="pet-name">Birman</div>
+        <div class="pet-type">Cat</div>
+        <div class="pet-status not-adopted">Not adopted</div>
+      </a>
+
+      <div class="pet-card">
+        <img src="img/Abyssinian.jpg" alt="Cat">
+        <div class="pet-name">Abyssinian</div>
+        <div class="pet-type">Cat</div>
+        <div class="pet-status adopted">Adopted</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
