@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt a Pet | adōpets</title>
+    <link rel="stylesheet" href="css/Admin.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/viewpets.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            position: relative;
+        }
+
+        .body-bg-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/bg-blur.jpg'); /* Change path as needed */
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        .adopt-container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pet-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .pet-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 220px;
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pet-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .pet-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .pet-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+
+        .pet-message {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .adopt-btn {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .adopt-btn:hover {
+            background-color: #ff4d94;
+        }
+
+        .pet-modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 20px;
+            max-width: 400px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .modal-info h2 {
+            margin: 10px 0 5px;
+        }
+
+        .modal-info p {
+            font-size: 14px;
+        }
+
+        .confirmation {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 20;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="body-bg-blur"></div>
+
+    <!-- Main Container -->
+    <div class="adopt-container">
+        <h1>Adopt a Friend 🐾</h1>
+        <p>These lovely pets are waiting for a forever home!</p>
+
+        <div class="pet-grid">
+            <!-- Pet Card 1 -->
+            <div class="pet-card">
+                <img src="img/Birman.jpg" alt="Fluffy"
+                    onclick="openModal('Fluffy', '1 year', 'Fluffy is a playful and affectionate cat who loves cuddles.', 'img/Birman.jpg')">
+                <div class="pet-name">Fluffy</div>
+                <div class="pet-message">I'm fluffy and full of love! Take me home? 💖</div>
+                <button class="adopt-btn" onclick="adoptPet('Fluffy')">Adopt Me</button>
+            </div>
+
+            <!-- Pet Card 2 -->
+            <div class="pet-card">
+                <img src="img/golden.jpg" alt="Buddy"
+                    onclick="openModal('Buddy', '3 years', 'Buddy is energetic and loyal. He’ll be your best friend forever!', 'img/golden.jpg')">
+                <div class="pet-name">Buddy</div>
+                <div class="pet-message">Woof! Ready to fetch happiness into your life 🐶</div>
+                <button class="adopt-btn" onclick="adoptPet('Buddy')">Adopt Me</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="pet-modal" id="petModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="">
+            <div class="modal-info">
+                <h2 id="modalName"></h2>
+                <p><strong>Age:</strong> <span id="modalAge"></span></p>
+                <p id="modalDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adoption Confirmation -->
+    <div class="confirmation" id="confirmationMsg">You’ve adopted a new friend! 🎉</div>
+
+    <!-- JS Functions -->
+    <script>
+        function openModal(name, age, desc, imageSrc) {
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalAge').textContent = age;
+            document.getElementById('modalDesc').textContent = desc;
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('petModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('petModal').style.display = 'none';
+        }
+
+        function adoptPet(petName) {
+            const msg = document.getElementById('confirmationMsg');
+            msg.textContent = `🎉 You’ve successfully adopted ${petName}! 🐾`;
+            msg.style.display = 'block';
+
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

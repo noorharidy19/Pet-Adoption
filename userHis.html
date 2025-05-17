@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoption History | adōpets</title>
+    <link rel="stylesheet" href="css/Admin.css">
+    <link rel="stylesheet" href="css/users.css"> <!-- Reuse existing admin table styles -->
+</head>
+<body>
+    <div class="container">
+        <h1>Adoption History</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pet Name</th>
+                    <th>Type</th>
+                    <th>Age</th>
+                    <th>Date of Adoption</th>
+                </tr>
+            </thead>
+            <tbody id="adoptionTableBody">
+                <!-- Table rows will be rendered by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Sample adoption history data with pet type
+        const adoptionHistory = [
+            { name: 'Fluffy', type: 'Cat', age: '1 year', date: '2024-12-20' },
+            { name: 'Polly', type: 'Bird', age: '4 years', date: '2025-04-05' }
+        ];
+
+        function renderAdoptionHistory() {
+            const tbody = document.getElementById('adoptionTableBody');
+            tbody.innerHTML = '';
+            adoptionHistory.forEach(pet => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${pet.name}</td>
+                        <td>${pet.type}</td>
+                        <td>${pet.age}</td>
+                        <td>${pet.date}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        renderAdoptionHistory();
+    </script>
+</body>
+</html>
