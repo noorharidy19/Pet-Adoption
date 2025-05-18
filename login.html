@@ -6,6 +6,26 @@
     <title>Pet Adoption - Login</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4340ff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        .back-home i {
+            font-size: 1.1em;
+        }
+        .back-home:hover {
+            color: #ff4081;
+        }
+    </style>
 </head>
 <body>
     <div class="body-bg-blur"></div>
@@ -14,6 +34,7 @@
             <div class="logo">
                 <img src="img/pawprint.png" alt="Cute Dog Icon">
             </div>
+            <a href="Home.html" class="back-home"><i class="fas fa-arrow-left"></i> Back Home</a>
             <h2>Welcome!</h2>
             <form onsubmit="validateLogin(event)">
                 <div class="input">
@@ -29,6 +50,7 @@
                 <button type="submit" class="login-btn">Login</button>
             </form>
             <p class="signup-link">New here? <a href="Signup.html">Create an account!</a></p>
+            <p class="forgot-password"><a href="Forget.html">Forgot Password?</a></p>
         </div>
     </div>
     <script>

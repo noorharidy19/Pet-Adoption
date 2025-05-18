@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users | adōpets Admin</title>
+    <link rel="stylesheet" href="css/Admin.css">
+    <link rel="stylesheet" href="css/users.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Users</h1>
+        <button class="add-btn" onclick="openPopup('add')">Add User</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>pet</th>
+                    <th>status</th>
+                    <th>Actions</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <!-- Table rows will be rendered by JS -->
+            </tbody>
+        </table>
+    </div>
+ 
+    <<!-- ...existing code... -->
+<div class="popup-container" id="applicationsPopupContainer" style="display:none;">
+    <div class="popup" style="min-width:320px;">
+        <h2>User Applications</h2>
+        <div id="applicationsList"></div>
+        <div class="popup-actions">
+            <button class="cancel" onclick="closeApplicationsPopup()">Close</button>
+        </div>
+    </div>
+</div>
+<!-- ...existing code... -->
+  
+    <script src="js/user.js"></script>
+ <script>
+    renderTable = function() {
+        const tbody = document.getElementById('userTableBody');
+        tbody.innerHTML = '';
+        users.forEach((user, userIdx) => {
+            const apps = userApplications[userIdx] || [];
+            if (apps.length === 0) {
+                tbody.innerHTML += `
+                <tr>
+                    <td>${user.name}</td>
+                    <td colspan="2" style="color:#aaa;">No applications</td>
+                    <td></td>
+                </tr>`;
+            } else {
+                apps.forEach((app, appIdx) => {
+                    tbody.innerHTML += `
+                    <tr>
+                        <td>${user.name}</td>
+                        <td>${app.pet}</td>
+                        <td id="appStatus${userIdx}_${appIdx}">${app.status}</td>
+                        <td>
+                                                      <button class='action-btn' onclick='rejectApplication(${userIdx},${appIdx})'>Accept</button>
+                            <button class='action-btn' onclick='rejectApplication(${userIdx},${appIdx})'>Reject</button>
+                        </td>
+                    </tr>`;
+                });
+            }
+        });
+    }
+    renderTable();
+    function rejectApplication(userIdx, appIdx) {
+    userApplications[userIdx][appIdx].status = 'Rejected';
+    document.getElementById(`appStatus${userIdx}_${appIdx}`).textContent = 'Rejected';
+}
+</script>
+   
+</body>
+</html>

@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | adōpets</title>
     <link rel="stylesheet" href="css/Admin.css">
+   <style>
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4340ff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        .back-home i {
+            font-size: 1.1em;
+        }
+        .back-home:hover {
+            color: #ff4081;
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <div class="admin-dashboard">
         <div class="admin-header">
+            <a href="Home.html" class="back-home"><i class="fas fa-arrow-left"></i> Back Home</a>
             <h1>Admin Dashboard</h1>
             <button class="admin-logout">Logout</button>
         </div>
@@ -25,7 +45,7 @@
                 <p>View and update pet profiles</p>
             </div>
             <div class="admin-card">
-                <a class="icon-btn" href="applications.html"><i class="fas fa-file-alt"></i></a>
+                <a class="icon-btn" href="app.html"><i class="fas fa-file-alt"></i></a>
                 <h2>Applications</h2>
                 <p>Review and process adoption applications</p>
             </div>
