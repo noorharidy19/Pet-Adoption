@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adoption Form</title>
+  <link rel="stylesheet" href="css/stylesadopt.css" />
+</head>
+<body>
+  <div class="form-container">
+    <a href="index.html" class="back-link">&larr; Back to Animals</a>
+    <h2>Adoption Application</h2>
+    <form id="adoption-form">
+      <label for="your-name">Your Name:</label>
+      <input type="text" id="your-name" name="your-name" required />
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="reason">Why do you want to adopt?</label>
+      <textarea id="reason" name="reason" required></textarea>
+
+      <button type="submit">Submit Application</button>
+    </form>
+    <div id="success-message" style="display:none;margin-top:20px;color:green;font-weight:bold;">
+      Your application has been submitted successfully!
+    </div>
+  </div>
+  <script src="js/adopt.js"></script>
+</body>
+</html>
