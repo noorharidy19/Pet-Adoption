@@ -3,15 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Users | adōpets Admin</title>
     <link rel="stylesheet" href="css/Admin.css">
     <link rel="stylesheet" href="css/users.css">
+     <style>
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #2634cc;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        .back-home i {
+            font-size: 1.1em;
+        }
+        .back-home:hover {
+            color: #40ccff;
+        }
+    </style>
 </head>
 <body>
     
     <div class="container">
-        <h1>Users</h1>
+        <h1>users and their pet applications.</h1>
         <button class="add-btn" onclick="openPopup('add')">Add User</button>
+        <button class="add-btn"> <a href="AdminDash.html" style="color: aliceblue;">DashBoard</a></button>
+       
         <table>
             <thead>
                 <tr>

@@ -39,7 +39,7 @@
             <form onsubmit="validateLogin(event)">
                 <div class="input">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username" id="loginUsername">
+                    <input type="text" placeholder="Email" id="loginUsername">
                 </div>
                 <div class="error-message" id="loginUsernameError" style="color:red;"></div>
                 <div class="input">
@@ -62,17 +62,30 @@ function validateLogin(event) {
     document.getElementById('loginUsernameError').textContent = '';
     document.getElementById('loginPasswordError').textContent = '';
     if (!username.value.trim()) {
-        document.getElementById('loginUsernameError').textContent = 'Username is required.';
+        document.getElementById('loginUsernameError').textContent = 'email is required.';
         valid = false;
+    } else {
+        // Email format validation
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(username.value.trim())) {
+            document.getElementById('loginUsernameError').textContent = 'Enter a valid email address.';
+            valid = false;
+        }
     }
     if (!password.value) {
         document.getElementById('loginPasswordError').textContent = 'Password is required.';
         valid = false;
     }
     if (valid) {
-        // Replace with actual login logic
-        alert('Login successful!');
-        event.target.submit();
+        if (username.value.trim() === "noor@gmail.com" && password.value === "123") {
+            window.location.href = "AdminDash.html";
+        } 
+        else if(username.value.trim() === "nourhan@gmail.com" && password.value === "456") {
+            window.location.href = "UserDash.html";
+        }
+        else {
+            document.getElementById('loginPasswordError').textContent = 'Invalid username or password.';
+        }
     }
 }
 window.onload = function () {

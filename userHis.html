@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoption History | adōpets</title>
     <link rel="stylesheet" href="css/Admin.css">
-    <link rel="stylesheet" href="css/users.css"> <!-- Reuse existing admin table styles -->
+    <link rel="stylesheet" href="css/users.css"> 
+    <style>
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: hsl(217, 79%, 57%);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        .back-home i {
+            font-size: 1.1em;
+        }
+        .back-home:hover {
+            color: #40ccff;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><!-- Reuse existing admin table styles -->
 </head>
 <body>
     <div class="container">
         <h1>Adoption History</h1>
+        <a href="UserDash.html" class="back-home"><i class="fas fa-arrow-left"></i> dashboard</a>
         <table>
             <thead>
                 <tr>
